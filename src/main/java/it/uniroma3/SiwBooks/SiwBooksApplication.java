@@ -1,4 +1,4 @@
-package it.uniroma3.MyRecipe;
+package it.uniroma3.SiwBooks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class SiwBooksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SiwBooksApplication.class, args);
 	}
-
 }

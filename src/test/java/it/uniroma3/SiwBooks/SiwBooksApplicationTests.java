@@ -1,4 +1,4 @@
-package it.uniroma3.MyRecipe;
+package it.uniroma3.SiwBooks;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

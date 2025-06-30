@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Registrazione</title>
+    <th:block th:replace="~{moduli/head :: head}"></th:block>
+</head>
+
+<body>
+    <div class="bold-line"></div>
+    <div class='container' style="height: 1100px;">
+        <div class="window">
+            <div class="overlay"></div>
+            <div class="content-form">
+                <div class="welcome">Benvenuto!</div>
+                <div class="subtitle">Crea un nuovo account per iniziare a usare i nostri servizi.</div>
+                <form th:action="@{/registrazione}" method="post" class="input-fields">
+                    <input th:field="${utenteNuovo.nome}" type="text" placeholder="Nome" class="input-line full-width">
+                    <input th:field="${utenteNuovo.cognome}" type="text" placeholder="Cognome" class="input-line full-width">
+                    <input th:field="${utenteNuovo.email}" type="email" placeholder="Email" class="input-line full-width">
+                    <input th:field="${credenziali.username}" type="text" placeholder="Username" class="input-line full-width">
+                    <input th:field="${credenziali.password}" type="password" placeholder="Password" class="input-line full-width">
+
+                    <div><button type="submit" class="ghost-round full-width">Registrati</button></div>
+                </form>
+                <div class='spacing'>Hai già un account? <a class='highlight' href="/login">Accedi</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

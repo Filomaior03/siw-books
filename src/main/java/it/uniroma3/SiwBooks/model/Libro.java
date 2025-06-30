@@ -41,7 +41,6 @@ public class Libro {
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL)
     private List<Recensione> recensioni;
 
-
     public Long getId() {
         return id;
     }

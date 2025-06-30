@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Home</title>
+  <th:block th:replace="~{moduli/head :: head}"></th:block>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <th:block th:replace="~{moduli/header :: header}"></th:block>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <!-- Logo SIW BOOKS -->
+    <div style="color: white; font-weight: bold; font-size: 1.4rem; text-align: center; margin-bottom: 30px;">
+      SIW BOOKS
+    </div>
+    <a href="/libri">Libri</a>
+    <a th:href="@{/autori}">Autori</a>
+  </div>
+
+  <div class="vetrina-bg">
+    <div th:if='${ruolo.equals("admin")}'>
+      <div>
+        <a href="/libroForm">
+          <button class="ghost-round">Nuovo Libro</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="cards-container">
+        <a th:each="libro : ${libri}" th:href="@{'/libro/' + ${libro.id}}">
+          <div class="card">
+            <div class="card-image">
+              <img th:src="@{'/' + ${libro.copertina}}" alt="Copertina libro" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title" th:text="${libro.titolo}">Nome Libro</h3>
+              <p class="card-desc" th:text="${libro.descrizione}">Descrizione breve del prodotto 1.</p>
+
+              <form th:if="${ruolo.equals('admin')}" th:action="@{'/eliminazioneLibro/' + ${libro.id}}" method="get">
+                <button type="submit" class="btn btn-danger">Elimina</button>
+              </form>
+
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

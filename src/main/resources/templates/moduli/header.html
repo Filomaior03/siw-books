@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siw Books</title>
+    <!-- Link al CSS -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <!-- HEADER CON TOP BAR -->
+    <header class="main-header" th:fragment="header">
+        <!-- Testo SIW BOOKS al posto del logo -->
+        <div class="logo">
+            <a href="/index">
+                <span class="logo-text">SIW BOOKS</span> <!-- Classe logo-text per il colore -->
+            </a>
+        </div>
+
+        <!-- Username se loggato -->
+        <div class="header-username" th:if="${userDetails != null}">
+            <span th:text="${userDetails.username}">Username</span>
+            <form action="/logout" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button class="ghost-round" type="submit">Esci</button>
+            </form>
+        </div>
+
+        <!-- Login / Registrazione -->
+        <div class="header-username" th:if="${userDetails == null}">
+            <span class="highlight"><a href="/login">Login</a></span>
+            <span class="highlight"><a href="/registrazione">Registrati</a></span>
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="/index">Libri</a></li>
+                <li><a href="/autori">Autori</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <div class="content-container">
+        <!-- Sezione di login o altre pagine -->
+        <div class="container">
+            <div class="window">
+                <div class="overlay"></div>
+                <div class="bold-line"></div>
+                <div class="content-form">
+                    <div class="welcome">Benvenuto</div>
+                    <div class="subtitle">Accedi o registrati per iniziare</div>
+
+                    <!-- FORM LOGIN -->
+                    <form action="/login" method="POST">
+                        <div class="input-fields">
+                            <input class="input-line full-width" type="email" name="email" placeholder="Email" required>
+                            <input class="input-line full-width" type="password" name="password" placeholder="Password" required>
+                            <button class="ghost-round full-width" type="submit">Accedi</button>
+                        </div>
+                    </form>
+                    <div class="spacing">Non hai un account? <a href="/registrazione">Registrati</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JS (se necessario per il comportamento dinamico della sidebar o del menu) -->
+    <script src="/script.js"></script>
+
+</body>
+
+</html>

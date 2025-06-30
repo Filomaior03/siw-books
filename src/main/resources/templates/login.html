@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title>Login</title>
+    <th:block th:replace="~{moduli/head :: head}"></th:block>
+</head>
+
+<body>
+    <div class='container' style="height: 1100px;">
+        <div class='window'>
+            <div class='overlay'></div>
+            <div class='content-form'>
+                <div class='welcome'>Area riservata</div>
+                <div class='subtitle'>Accedi al tuo account per recensire altri libri!</div>
+                <form th:action="@{/login}" method="post" class="input-fields">
+                    <input name="username" type="text" placeholder="Username" class="input-line full-width" />
+                    <input name="password" type="password" placeholder="Password" class="input-line full-width" />
+                    <div><button type="submit" class="ghost-round full-width">Login</button></div>
+                </form>
+                <div class='spacing'>Non hai un account? <a class='highlight' href="/registrazione">Registrati</a></div>
+            </div>
+        </div>
+    </div>
+</body>

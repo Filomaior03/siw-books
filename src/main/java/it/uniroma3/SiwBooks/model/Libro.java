@@ -24,8 +24,6 @@ public class Libro {
 
     private Integer annoPubblicazione;
 
-    private String isbn;
-
     private String genere;
     
     private String copertina;
@@ -86,15 +84,7 @@ public class Libro {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
+    
     public String getGenere() {
         return genere;
     }

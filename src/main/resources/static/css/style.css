@@ -328,8 +328,7 @@ a {
 
 /* Genere del libro */
 .book-genere,
-.book-year,
-.book-isbn {
+.book-year {
     font-size: 16px;
     color: #333;
 }

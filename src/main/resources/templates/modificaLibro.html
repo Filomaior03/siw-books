@@ -21,7 +21,6 @@
                 <textarea class="book-description admin-input" th:field="${libro.descrizione}" th:value="${libro.descrizione}" placeholder="Descrizione libro"></textarea>
                 <input class="admin-input" th:field="${libro.annoPubblicazione}" th:value="${libro.annoPubblicazione}" placeholder="Anno pubblicazione" />
                 <input class="admin-input" th:field="${libro.genere}" th:value="${libro.genere}" placeholder="Genere libro" />
-                <input class="admin-input" th:field="${libro.isbn}" th:value="${libro.isbn}" placeholder="ISBN libro" />
                 <div class="book-image">
                     <input type="file" name="copertinaFile" accept="image/*" th:value="${libro.copertina}"/>
                 </div>

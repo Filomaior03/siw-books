@@ -25,55 +25,55 @@ import static it.uniroma3.SiwBooks.model.Credenziali.UTENTE_ROLE;
 @EnableWebSecurity
 public class AuthConfiguration {
 
-    @Autowired
-    private DataSource dataSource;
+	@Autowired
+	private DataSource dataSource;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .authoritiesByUsernameQuery("SELECT username, ruolo from credenziali WHERE username=?")
-                .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credenziali WHERE username=?");
-    }
-    
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth)
+			throws Exception {
+		auth.jdbcAuthentication()
+		.dataSource(dataSource)
+		.authoritiesByUsernameQuery("SELECT username, ruolo from credenziali WHERE username=?")
+		.usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credenziali WHERE username=?");
+	}
 
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
-        return authenticationConfiguration.getAuthenticationManager();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    protected SecurityFilterChain configure(final HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-            .cors(cors -> cors.disable())
-            .authorizeHttpRequests(requests -> requests
-                .requestMatchers(HttpMethod.GET, "/index", "/libro/**", "/autore/**", "/autori/**", "/registrazione/**", "/favicon.ico", "/css/style.css", "/images/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/eliminazioneRecensione/**", "/modificaAutore/**", "/eliminazioneAutore/**", "/modificaLibro/**", "eliminazioneLibro/**", "/autoreForm/**", "/libroForm/**").hasAuthority(ADMIN_ROLE)
-                .requestMatchers(HttpMethod.POST, "/aggiuntaAutore/**", "/aggiuntaLibro/**", "/modificaAutore/**", "/modificaLibro/" ).hasAuthority(ADMIN_ROLE)
-                .requestMatchers(HttpMethod.POST, "/aggiuntaRecensione/**").hasAuthority(UTENTE_ROLE)
-                .anyRequest().authenticated()
-            )
-            .formLogin(login -> login
-                .loginPage("/login")
-                .permitAll()
-                .defaultSuccessUrl("/index", true)
-                .failureUrl("/login?error=true")
-            )
-            .logout(logout -> logout
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .clearAuthentication(true)
-                .permitAll()
-            );
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+		return authenticationConfiguration.getAuthenticationManager();
+	}
 
-        return httpSecurity.build();
-    }
+	@Bean
+	protected SecurityFilterChain configure(final HttpSecurity httpSecurity) throws Exception {
+		httpSecurity
+		.cors(cors -> cors.disable())
+		.authorizeHttpRequests(requests -> requests
+				.requestMatchers(HttpMethod.GET, "/index", "/libro/**", "/autore/**", "/autori/**", "/registrazione/**", "/favicon.ico", "/css/style.css", "/images/**").permitAll()
+				.requestMatchers(HttpMethod.GET, "/eliminazioneRecensione/**", "/modificaAutore/**", "/eliminazioneAutore/**", "/modificaLibro/**", "eliminazioneLibro/**", "/autoreForm/**", "/libroForm/**").hasAuthority(ADMIN_ROLE)
+				.requestMatchers(HttpMethod.POST, "/aggiuntaAutore/**", "/aggiuntaLibro/**", "/modificaAutore/**", "/modificaLibro/" ).hasAuthority(ADMIN_ROLE)
+				.requestMatchers(HttpMethod.POST, "/aggiuntaRecensione/**").hasAuthority(UTENTE_ROLE)
+				.anyRequest().authenticated()
+				)
+		.formLogin(login -> login
+				.loginPage("/login")
+				.permitAll()
+				.defaultSuccessUrl("/index", true)
+				.failureUrl("/login?error=true")
+				)
+		.logout(logout -> logout
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
+				.clearAuthentication(true)
+				.permitAll()
+				);
+
+		return httpSecurity.build();
+	}
 
 }

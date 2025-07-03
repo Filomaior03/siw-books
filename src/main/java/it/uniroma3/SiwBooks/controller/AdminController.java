@@ -47,7 +47,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + copertinaFile.getOriginalFilename();
-				Path percorso = Paths.get("uploads/copertine/" + nomeFile);
+				Path percorso = Paths.get("images/copertine/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -56,7 +56,7 @@ public class AdminController {
 				Files.write(percorso, copertinaFile.getBytes());
 
 				// Imposta il path (visibile via web) nel libro
-				libro.setCopertina("uploads/copertine/" + nomeFile);
+				libro.setCopertina("images/copertine/" + nomeFile);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -93,7 +93,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + immagineFile.getOriginalFilename();
-				Path percorso = Paths.get("uploads/autori/" + nomeFile);
+				Path percorso = Paths.get("images/autori/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -102,7 +102,7 @@ public class AdminController {
 				Files.write(percorso, immagineFile.getBytes());
 
 				// Imposta il path (visibile via web) nel libro
-				autore.setImmagine("uploads/autori/" + nomeFile);
+				autore.setImmagine("images/autori/" + nomeFile);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -147,7 +147,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + immagineFile.getOriginalFilename();
-				Path percorso = Paths.get("uploads/autori/" + nomeFile);
+				Path percorso = Paths.get("images/autori/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -156,7 +156,7 @@ public class AdminController {
 				Files.write(percorso, immagineFile.getBytes());
 
 				// Imposta il path (visibile via web) nel libro
-				autore.setImmagine("uploads/autori/" + nomeFile);
+				autore.setImmagine("images/autori/" + nomeFile);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -184,7 +184,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + copertinaFile.getOriginalFilename();
-				Path percorso = Paths.get("uploads/copertine/" + nomeFile);
+				Path percorso = Paths.get("images/copertine/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -193,7 +193,7 @@ public class AdminController {
 				Files.write(percorso, copertinaFile.getBytes());
 
 				// Imposta il path (visibile via web) nel libro
-				libro.setCopertina("uploads/copertine/" + nomeFile);
+				libro.setCopertina("images/copertine/" + nomeFile);
 
 			} catch (IOException e) {
 				e.printStackTrace();

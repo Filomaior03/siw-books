@@ -41,8 +41,7 @@ public class Autenticazione {
     public String getRegistrazione(Model model, HttpServletRequest request) {
         model.addAttribute("utenteNuovo", new Utente());
         model.addAttribute("credenziali", new Credenziali());
-        String referer = request.getHeader("Referer");
-        return "redirect:" + referer; // Reindirizza alla pagina precedente
+        return "registrazione";
     }
 
     @PostMapping("/registrazione")

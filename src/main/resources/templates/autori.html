@@ -2,41 +2,34 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Home</title>
-  <th:block th:replace="~{moduli/head :: head}"></th:block>
+    <title>Home</title>
+    <th:block th:replace="~{moduli/head :: head}"></th:block>
 </head>
 
-
-
 <body>
-
+  
   <!-- HEADER -->
   <th:block th:replace="~{moduli/header :: header}"></th:block>
 
-
-
   <div class="vetrina-bg">
-
-    <div style="z-index: 3; width: 100%;  position: fixed; height: 60px; margin-top: -10px; backdrop-filter: blur(2px); background-color: rgba(255, 255, 255, 0.001);" th:if='${ruolo.equals("admin")}'>
-      <div style="z-index: 100; position: fixed; right: 40px; margin-top: 15px;">
-        <a href="/autoreForm">
-          <button class="ghost-round" style="background-color: rgba(255, 255, 255, 0.451);">Nuovo Autore</button>
-        </a>
-      </div>
+    
+    <div th:if='${ruolo.equals("admin")}' class="new-author-container">
+      <a href="/autoreForm">
+        <button class="ghost-round">Nuovo Autore</button>
+      </a>
     </div>
-
-
-    <div class="content" style="position: static; margin-top: 60px; overflow-y: scroll;">
+    
+    <div class="content">
       <div class="cards-container">
-        <a th:each="autore : ${autori}" th:href="@{'/autore/' + ${autore.id}}" style="text-decoration: none;">
-          <div class="card" style="height: 410px;">
+        <a th:each="autore : ${autori}" th:href="@{'/autore/' + ${autore.id}}" class="card-link">
+          <div class="card">
             <div class="card-image">
-              <img style="width: 330px;" th:src="@{'/' + ${autore.immagine}}" alt="Immagine autore" />
+              <img th:src="@{'/' + ${autore.immagine}}" alt="Immagine autore" />
             </div>
-            <div class="card-body" style="margin-top: 150px;">
-              <h3 class="card-title" th:text="${autore.nome} + ' ' + ${autore.cognome}">Nome Libro</h3>
-              <form th:if="${ruolo.equals('admin')}" th:action="@{'/eliminazioneAutore/' + ${autore.id}}" method="get" style="display: block; position: static; margin-top: -30px; margin-bottom: 10px;">
-                <button style="width: 100%; border-radius: 10px; border: 1px solid black; background-color:#e6eef9; color: red" type="submit" class="btn btn-danger">Elimina</button>
+            <div class="card-body">
+              <h3 class="card-title" th:text="${autore.nome} + ' ' + ${autore.cognome}">Nome Autore</h3>
+              <form th:if="${ruolo.equals('admin')}" th:action="@{'/eliminazioneAutore/' + ${autore.id}}" method="get" class="delete-form">
+                <button type="submit" class="btn btn-danger btn-delete">Elimina</button>
               </form>
             </div>
           </div>
@@ -44,6 +37,7 @@
       </div>
     </div>
   </div>
+
 </body>
 
 </html>

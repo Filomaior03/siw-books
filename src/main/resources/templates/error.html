@@ -2,132 +2,76 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Errore 404</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Errore 404 - Pagina non trovata</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500&display=swap');
 
-    body,
-    html {
+    body, html {
       margin: 0;
-      height: 100%;
-      background: linear-gradient(135deg, #fefefe, #e3f2fd);
-      font-family: 'Roboto', sans-serif;
-      color: #333;
       padding: 0;
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #fefefe, #e3f2fd);
+      color: #37474f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .error-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+      max-width: 480px;
+      width: 90%;
+      padding: 40px 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(33, 150, 243, 0.15);
       text-align: center;
-      color: #37474f;
       position: relative;
     }
 
-    .error-title {
+    .error-code {
       font-size: 8rem;
       font-weight: 500;
-      margin: 0;
-      color: #2196f3;
+      color: #003366;
+      margin: 0 0 10px 0;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
     .error-message {
-      font-size: 1.5rem;
-      font-weight: 300;
-      margin: 20px 0;
+      font-size: 1.4rem;
+      margin: 0 0 30px 0;
       color: #555;
+      font-weight: 300;
     }
 
-    .ghost-round {
-      cursor: pointer;
-      background: #2196f3;
+    .btn-home {
+      display: inline-block;
+      background: #003366;
+      color: white;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 12px 40px;
       border: none;
       border-radius: 30px;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 400;
-      padding: 12px 35px;
       text-decoration: none;
       box-shadow: 0 3px 8px rgba(33, 150, 243, 0.3);
       transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
     }
 
-    .ghost-round:hover {
+    .btn-home:hover {
       background: #1976d2;
       transform: translateY(-2px);
-    }
-
-    .input-line {
-      background: none;
-      border: none;
-      border-bottom: 2px solid #2196f3;
-      font-size: 1.2rem;
-      color: #333;
-      padding: 5px;
-      transition: border-color 0.3s ease;
-      margin-top: 20px;
-    }
-
-    .input-line:focus {
-      border-color: #1976d2;
-      outline: none;
-    }
-
-    .highlight {
-      color: #2196f3;
-      font-weight: 400;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .highlight:hover {
-      color: #1976d2;
-    }
-
-    .spacing {
-      flex-grow: 1;
-      height: 60px;
-      text-align: center;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    .overlay {
-      background: rgba(33, 150, 243, 0.1);
-      opacity: 1;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      border-radius: 30px;
-    }
-
-    .bold-line {
-      background: #2196f3;
-      opacity: 0.05;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      width: 100%;
-      height: 360px;
-      z-index: 1;
     }
   </style>
 </head>
 <body>
   <div class="error-container">
-    <div class="bold-line"></div>
-    <div class="overlay"></div>
-    <h1 class="error-title">404</h1>
-    <p class="error-message">La pagina che stai cercando non esiste.</p>
-    <a href="#" class="ghost-round">Torna alla Home</a>
-    <input type="text" placeholder="Cerca qualcosa..." class="input-line" />
-    <div class="spacing">Oppure <span class="highlight">contattaci</span></div>
+    <h1 class="error-code">404</h1>
+    <p class="error-message">La pagina che stai cercando non esiste o è stata spostata.</p>
+
+    <a href="/" class="btn-home">Torna alla Home</a>
   </div>
 </body>
 </html>

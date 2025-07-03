@@ -7,16 +7,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 @Entity
 public class Recensione {
 
-	@Id	//chiave primaria della tabella
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recensione_seq")
-	@SequenceGenerator(name = "recensione_seq", sequenceName = "recensione_seq", allocationSize = 1)	//incremento gli id di 1
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
     @Column(nullable = false)

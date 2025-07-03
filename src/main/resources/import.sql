@@ -1,7 +1,7 @@
 -- CREDENZIALI
-INSERT INTO credenziali (id, username, ruolo, password) VALUES (1, 'lorenzo', 'ADMIN', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
-INSERT INTO credenziali (id, username, ruolo, password) VALUES (2, 'michela','ADMIN', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
-INSERT INTO credenziali (id, username, ruolo, password) VALUES (3, 'filippo', 'UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
+INSERT INTO credenziali (id, username, ruolo, password) VALUES (1, 'Lorenzo', 'UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
+INSERT INTO credenziali (id, username, ruolo, password) VALUES (2, 'Michela','UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
+INSERT INTO credenziali (id, username, ruolo, password) VALUES (3, 'Filippo', 'ADMIN', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
 
 -- UTENTI
 INSERT INTO utente (id, credenziali_id, nome, cognome, email) VALUES (1, 1, 'Lorenzo', 'Riccio', 'lorenzo@example.com');
@@ -56,3 +56,10 @@ INSERT INTO libro_autori (libri_id, autori_id) VALUES (7, 7);
 INSERT INTO libro_autori (libri_id, autori_id) VALUES (8, 8);
 INSERT INTO libro_autori (libri_id, autori_id) VALUES (9, 9);
 INSERT INTO libro_autori (libri_id, autori_id) VALUES (10, 10);
+
+-- Aggiorna il counter degli id delle varie tabelle
+SELECT setval('credenziali_seq', (SELECT MAX(id) FROM credenziali));
+SELECT setval('utente_seq', (SELECT MAX(id) FROM utente));
+SELECT setval('autore_seq', (SELECT MAX(id) FROM autore));
+SELECT setval('libro_seq', (SELECT MAX(id) FROM libro));
+SELECT setval('recensione_seq', (SELECT MAX(id) FROM recensione));

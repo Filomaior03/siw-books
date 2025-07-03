@@ -10,14 +10,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Utente {
 
-	@Id	//chiave primaria della tabella
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "utente_seq")
-	@SequenceGenerator(name = "utente_seq", sequenceName = "utente_seq", allocationSize = 1)	//incremento gli id di 1
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
     @Column(nullable = false)

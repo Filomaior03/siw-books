@@ -1,6 +1,5 @@
 package it.uniroma3.SiwBooks.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.SiwBooks.model.*;
 import it.uniroma3.SiwBooks.service.*;
 import jakarta.servlet.http.HttpServletRequest;
-
-
 
 @Controller
 public class Pagine {
@@ -64,8 +61,9 @@ public class Pagine {
 		recensione.setLibro(libroService.getLibroById(idLibro));
 		recensione.setUtente((Utente)model.getAttribute("utente"));
 		this.recensioneService.saveNewRecensione(recensione);
-        String referer = request.getHeader("Referer");
-        return "redirect:" + referer; // Reindirizza alla pagina precedente	
+		String referer = request.getHeader("Referer");
+		System.out.println(referer);
+		return "redirect:" + referer; // Reindirizza alla pagina precedente	
 	}
 
 }

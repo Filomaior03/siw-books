@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Credenziali {
@@ -14,9 +13,8 @@ public class Credenziali {
     public static final String ADMIN_ROLE = "ADMIN";
 	public static final String UTENTE_ROLE= "UTENTE";
     
-	@Id	//chiave primaria della tabella
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credenziali_seq")
-	@SequenceGenerator(name = "credenziali_seq", sequenceName = "credenziali_seq", allocationSize = 1)	//incremento gli id di 1
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
     @Column(unique = true, nullable = false)

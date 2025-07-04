@@ -1,7 +1,8 @@
 -- CREDENZIALI
 INSERT INTO credenziali (id, username, ruolo, password) VALUES (1, 'Lorenzo', 'UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
-INSERT INTO credenziali (id, username, ruolo, password) VALUES (2, 'Michela','UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
-INSERT INTO credenziali (id, username, ruolo, password) VALUES (3, 'Filippo', 'ADMIN', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi');
+INSERT INTO credenziali (id, username, ruolo, password) VALUES (2, 'Michela','UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
+
+INSERT INTO credenziali (id, username, ruolo, password) VALUES (3, 'Filippo', 'ADMIN', '$2a$12$58ofR0Bw3s0SVWmKnd8jLuAZ75Zxo2pfYDG4.Akz1oO/9b7kcpRZi'); -- pw: adminPassword!
 
 -- UTENTI
 INSERT INTO utente (id, credenziali_id, nome, cognome, email) VALUES (1, 1, 'Lorenzo', 'Riccio', 'lorenzo@example.com');

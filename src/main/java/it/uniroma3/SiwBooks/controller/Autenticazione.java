@@ -34,7 +34,7 @@ public class Autenticazione {
             return "redirect:" + referer; // Reindirizza alla pagina precedente
 
         }
-        return "login.html"; // Mostra la pagina di login se non autenticato
+        return "login"; // Mostra la pagina di login se non autenticato
     }
 
     @GetMapping("/registrazione")
@@ -45,7 +45,7 @@ public class Autenticazione {
     }
 
     @PostMapping("/registrazione")
-    public String registrazioneAutore(@Valid @ModelAttribute("utenteNuovo") Utente utente,
+    public String registrazione(@Valid @ModelAttribute("utenteNuovo") Utente utente,
             BindingResult userBindingResult,
             @Valid @ModelAttribute("credenziali") Credenziali credenziali,
             BindingResult credentialsBindingResult,

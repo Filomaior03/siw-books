@@ -1,7 +1,6 @@
 -- CREDENZIALI
 INSERT INTO credenziali (id, username, ruolo, password) VALUES (1, 'Lorenzo', 'UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
 INSERT INTO credenziali (id, username, ruolo, password) VALUES (2, 'Michela','UTENTE', '$2a$12$HtNgYhzZ0Gy.Si8DF9dHfOvTZBAc9E7c6rsqfBE90a3Mt21LZAkhi'); -- pw: "1Password!"
-
 INSERT INTO credenziali (id, username, ruolo, password) VALUES (3, 'Filippo', 'ADMIN', '$2a$12$58ofR0Bw3s0SVWmKnd8jLuAZ75Zxo2pfYDG4.Akz1oO/9b7kcpRZi'); -- pw: adminPassword!
 
 -- UTENTI
@@ -42,8 +41,8 @@ INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (4,
 INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (5, 'Atmosfera unica', 'L’isola di Arturo è un viaggio emozionante tra infanzia e maturità.', 4, 5, 1);
 INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (6, 'Avventura senza tempo', 'Le Avventure di Tom Sawyer è un classico che ho amato da bambino e riletto con piacere.', 5, 6, 2);
 INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (7, 'Resistenza e infanzia', 'Il Sentiero dei Nidi di Ragno è un romanzo intenso e poetico.', 4, 7, 3);
-INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (8, 'Iconico', 'Il Giovane Holden è un romanzo che parla direttamente ai giovani e ai disillusi.', 4, 4, 3);
-INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (9, 'Pirateria e coraggio', 'L’isola del Tesoro è un classico dell’avventura che cattura subito.', 5, 5, 1);
+INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (8, 'Iconico', 'Il Giovane Holden è un romanzo che parla direttamente ai giovani e ai disillusi.', 4, 8, 3);
+INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (9, 'Pirateria e coraggio', 'L’isola del Tesoro è un classico dell’avventura che cattura subito.', 5, 9, 1);
 INSERT INTO recensione (id, titolo, testo, voto, libro_id, utente_id) VALUES (10, 'Thriller avvincente', 'The Outsider mischia investigazione e orrore come solo Stephen King sa fare.', 4, 10, 2);
 
 -- Associazione tra libri e autori

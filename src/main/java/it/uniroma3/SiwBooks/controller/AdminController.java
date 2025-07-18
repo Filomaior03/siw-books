@@ -86,7 +86,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/aggiuntaAutore")
-	public String psotAggiuntaNuovoAutore(Model model, @ModelAttribute("autoreNuovo") Autore autore,
+	public String postAggiuntaNuovoAutore(Model model, @ModelAttribute("autoreNuovo") Autore autore,
 			@RequestParam("immagineFile") MultipartFile immagineFile) {
 		if (!immagineFile.isEmpty()) {
 			try {

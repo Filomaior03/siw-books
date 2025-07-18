@@ -11,54 +11,54 @@ import it.uniroma3.SiwBooks.model.*;
 import it.uniroma3.SiwBooks.service.*;
 
 @ControllerAdvice
-public class GlobalController {
+public class GlobalController {	//Controller che rende disponibili le informazioni dell'utente a tutte le view restituite dal Controller
 
-    @Autowired
-    private CredenzialiService credenzialiService;
+	@Autowired
+	private CredenzialiService credenzialiService;
 
-    @ModelAttribute("userDetails")
+	@ModelAttribute("userDetails")
+	public UserDetails getUser() {
 
-    public UserDetails getUser() {
+		UserDetails user = null;
 
-        UserDetails user = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();	//recupero l'utente autenticato
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		//salvo le informazioni dell'utente, se è autenticato
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		}
 
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        }
+		return user;
+	}
 
-        return user;
-    }
+	@ModelAttribute("ruolo")
+	public String getRuolo() {
 
-    @ModelAttribute("ruolo")
-    public String getRuolo() {
+		String ruolo = "";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();	//recupero il ruolo dell'utente
 
-        String ruolo = "";
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		//salvo il ruolo dell'utente
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
+			ruolo = credenziali.getRuolo();
+		}
+		return ruolo.toLowerCase();
+	}
 
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
-            ruolo = credenziali.getRuolo();
-        }
-        return ruolo.toLowerCase();
-    }
+	@ModelAttribute("utente")
+	public Utente getUtente() {
 
-    @ModelAttribute("utente")
-    public Utente getUtente() {
+		Utente utente = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        Utente utente = null;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		//recupero tutte le informazioni dell'utente, comprese le sue credenziali
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
+			utente = credenziali.getUtente();
+		}
 
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-                    .getPrincipal();
-            Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
-            utente = credenziali.getUtente();
-        }
-
-        return utente;
-    }
-
+		return utente;
+	}
 }

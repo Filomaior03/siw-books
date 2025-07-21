@@ -40,7 +40,7 @@ public class GlobalController {	//Controller che rende disponibili le informazio
 		//salvo il ruolo dell'utente
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
+			Credenziali credenziali = this.credenzialiService.getCredenzialiByUsername(userDetails.getUsername());
 			ruolo = credenziali.getRuolo();
 		}
 		return ruolo.toLowerCase();
@@ -55,7 +55,7 @@ public class GlobalController {	//Controller che rende disponibili le informazio
 		//recupero tutte le informazioni dell'utente, comprese le sue credenziali
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			Credenziali credenziali = this.credenzialiService.getCredenziali(userDetails.getUsername());
+			Credenziali credenziali = this.credenzialiService.getCredenzialiByUsername(userDetails.getUsername());
 			utente = credenziali.getUtente();
 		}
 

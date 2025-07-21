@@ -54,7 +54,7 @@ public class Autenticazione {
             return "registrazione"; // Ritorna al modulo con errori
         }
 
-        if (credenzialiService.getCredenziali(credenziali.getUsername()) != null) {
+        if (credenzialiService.getCredenzialiByUsername(credenziali.getUsername()) != null) {
             model.addAttribute("errore", "Username già esistente."); // Aggiungi un messaggio di errore
             return "registrazione"; // Ritorna al modulo con messaggio di errore
         }

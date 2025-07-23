@@ -53,7 +53,7 @@
       <h3>Recensioni:</h3>
       <div class="review" th:each="recensione : ${libro.recensioni}">
         <div class="review-header">
-          <strong th:text="${recensione.titolo}">Titolo</strong>  <!-- th:href="@{'/libriPerVoto/' + ${recensione.voto}}" -->
+          <strong th:text="${recensione.titolo}">Titolo</strong>
           <a class="rating" th:text="'Voto: ' + ${recensione.voto} + '/5'">Voto: 5/5</a>
         </div>
         <p th:text="${recensione.testo}">Testo della recensione...</p>

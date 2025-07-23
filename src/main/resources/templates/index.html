@@ -22,7 +22,6 @@
     
     <!-- Content Section -->
     <div class="content content-scroll">
-      <!-- No changes to cards-container, it's fine -->
       <div class="cards-container">
         <!-- Iterazione sui libri -->
         <a th:each="libro : ${libri}" th:href="@{'/libro/' + ${libro.id}}" class="card-link">
@@ -44,7 +43,7 @@
       </div>
     </div>
   </div>
-
+  
 </body>
 
 </html>

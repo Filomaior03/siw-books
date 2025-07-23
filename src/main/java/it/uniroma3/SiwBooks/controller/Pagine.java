@@ -1,5 +1,7 @@
 package it.uniroma3.SiwBooks.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.SiwBooks.model.*;
-import it.uniroma3.SiwBooks.service.*;
+import it.uniroma3.SiwBooks.model.Autore;
+import it.uniroma3.SiwBooks.model.Recensione;
+import it.uniroma3.SiwBooks.model.Utente;
+import it.uniroma3.SiwBooks.service.AutoreService;
+import it.uniroma3.SiwBooks.service.LibroService;
+import it.uniroma3.SiwBooks.service.RecensioneService;
 import jakarta.servlet.http.HttpServletRequest;
+
+
 
 @Controller
 public class Pagine {
@@ -24,7 +32,7 @@ public class Pagine {
 	@GetMapping({"/", "/index"})
 	public String getVetrina(Model model) {
 		model.addAttribute("libri", libroService.getAllLibri());
-		return "index.html";
+		return "index";
 	}
 
 	@GetMapping("/libro/{idLibro}")
@@ -33,13 +41,13 @@ public class Pagine {
 		model.addAttribute("recensioneNuova", new Recensione());
 		boolean esisteRecensione = libroService.getLibroById(idLibro).getRecensioni().stream().anyMatch(r -> r.getUtente().equals(model.getAttribute("utente")));
 		model.addAttribute("esisteRecensione", esisteRecensione);
-		return "libro.html";
+		return "libro";
 	}
 
 	@GetMapping("/autori")
 	public String getAutori(Model model) {
 		model.addAttribute("autori", autoreService.getAllAutori());
-		return "autori.html";
+		return "autori";
 	}
 
 	@GetMapping("/autore/{idAutore}")
@@ -47,13 +55,13 @@ public class Pagine {
 		Autore autore = autoreService.getAutoreById(idAutore);
 		model.addAttribute("autore", autore);
 		model.addAttribute("libri", autore.getLibri());
-		return "autore.html";
+		return "autore";
 	}
 
 	@GetMapping("/recensioni")
 	public String getRecensioni(Model model) {
 		model.addAttribute("recensioni", recensioneService.getAllRecensioni());
-		return "recensioni.html";
+		return "recensioni";
 	}
 
 	@PostMapping("/aggiuntaRecensione")
@@ -62,7 +70,6 @@ public class Pagine {
 		recensione.setUtente((Utente)model.getAttribute("utente"));
 		this.recensioneService.saveNewRecensione(recensione);
 		String referer = request.getHeader("Referer");
-		System.out.println(referer);
 		return "redirect:" + referer; // Reindirizza alla pagina precedente	
 	}
 

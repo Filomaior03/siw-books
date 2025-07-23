@@ -10,17 +10,22 @@
   <!-- Header fisso -->
   <th:block th:replace="~{moduli/header :: header}"></th:block>
   
-  <div th:if='${ruolo.equals("admin")}'>
-    <div>
-      <a th:href="@{'/modificaAutore/' + ${autore.id}}">
-        <button class="ghost-round">Modifica Autore</button>
+  <!-- Pulsante Modifica Autore visibile solo per admin, posizionato fisso in alto a destra -->
+  <div style="position: fixed; top: 60px; right: 40px; z-index: 1000;" th:if='${ruolo.equals("admin")}'>
+    <a th:href="@{'/modificaAutore/' + ${autore.id}}">
+      <button class="ghost-round" style="background-color: #005c99; border: 1px solid #003366;">Modifica Autore</button>
+    </a>
+
+    <!-- <div>
+      <a th:href="@{'/autoriPiùGiovani/' + ${autore.dataNascita}}">
+        <button class="ghost-round" style="background-color: #005c99; border: 1px solid #003366;">Autori più giovani</button>
       </a>
-    </div>
+    </div> -->
+  
   </div>
   
   <!-- Contenuto principale -->
   <div class="book-detail-container">
-    
     <div class="book-image">
       <img th:src="@{'/' + ${autore.immagine}}" alt="Immagine autore" />
     </div>

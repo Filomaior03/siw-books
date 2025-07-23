@@ -2,35 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <header class="main-header" th:fragment="header">
-    <!-- Logo SIW BOOKS -->
-    <div class="logo">
-        <a href="/index" class="no-decoration">
-            <span class="logo-text">SIW BOOKS</span>
-        </a>
-    </div>
-
-    <!-- Menu principale senza hamburger -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="/index">Libri</a></li>
-            <li><a href="/autori">Autori</a></li>
-        </ul>
-    </nav>
-
-    <!-- Username se loggato -->
-    <div class="header-username" th:if="${userDetails != null}">
-        <span th:text="${userDetails.username}">Username</span>
-        <form action="/logout" method="post" style="display:inline;">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-            <button type="submit">Esci</button>
-        </form>
-    </div>
-    
-    <!-- Login/Registrati se non loggato -->
-    <div class="header-username" th:if="${userDetails == null}">
-        <span><a href="/login">Login</a></span>
-        <span><a href="/registrazione">Registrati</a></span>
-    </div>
+  <!-- Logo SIW BOOKS -->
+  <div class="logo">
+    <a th:href="@{/index}" class="no-decoration">
+      <span class="logo-text">SIW BOOKS</span>
+    </a>
+  </div>
+  
+  <!-- Menu principale senza hamburger -->
+  <nav class="main-nav">
+    <ul>
+      <li><a th:href="@{/index}">Libri</a></li>
+      <li><a th:href="@{/autori}">Autori</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Username se loggato -->
+  <div class="header-username" th:if="${userDetails != null}">
+    <span th:text="${userDetails.username}">Username</span>
+    <form action="/logout" method="post" style="display:inline;">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <button type="submit">Esci</button>
+    </form>
+  </div>
+  
+  <!-- Login/Registrati se non loggato -->
+  <div class="header-username" th:if="${userDetails == null}">
+    <span><a th:href="@{/login}">Login</a></span>
+    <span><a th:href="@{/registrazione}">Registrati</a></span>
+  </div>
 </header>
 
 </html>

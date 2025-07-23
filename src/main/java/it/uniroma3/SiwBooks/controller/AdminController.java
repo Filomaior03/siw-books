@@ -35,19 +35,20 @@ public class AdminController {
 	public String getAggiuntaNuovoLibro(Model model) {
 		model.addAttribute("libro", new Libro());
 		model.addAttribute("autori", autoreService.getAllAutori());
-		return "libroForm.html";
+		return "libroForm";
 	}
 
 	@PostMapping("/aggiuntaLibro")
 	public String aggiungiLibro(@ModelAttribute Libro libro,
 			@RequestParam("copertinaFile") MultipartFile copertinaFile, 
-			        @RequestParam("listaAutori") List<Long> listaAutori)  {
+			@RequestParam("listaAutori") List<Long> listaAutori)  {
+		
 		if (!copertinaFile.isEmpty()) {
 			try {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + copertinaFile.getOriginalFilename();
-				Path percorso = Paths.get("images/copertine/" + nomeFile);
+				Path percorso = Paths.get("src/main/resources/static/images/copertine/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -82,7 +83,7 @@ public class AdminController {
 	@GetMapping("/autoreForm")
 	public String getAggiuntaNuovoAutore(Model model) {
 		model.addAttribute("autoreNuovo", new Autore());
-		return "autoreForm.html";
+		return "autoreForm";
 	}
 
 	@PostMapping("/aggiuntaAutore")
@@ -93,7 +94,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + immagineFile.getOriginalFilename();
-				Path percorso = Paths.get("images/autori/" + nomeFile);
+				Path percorso = Paths.get("src/main/resources/static/images/autori/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -134,7 +135,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/modificaAutore/{idAutore}")
-	public String modificaAutore(Model model, @PathVariable("idAutore") Long idAutore) {
+	public String modificaAutore(Model model, @PathVariable("idAutore") Long idAutore) {		
 		model.addAttribute("autore", autoreService.getAutoreById(idAutore));
 		return "modificaAutore";
 	}
@@ -147,7 +148,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + immagineFile.getOriginalFilename();
-				Path percorso = Paths.get("images/autori/" + nomeFile);
+				Path percorso = Paths.get("src/main/resources/static/images/autori/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());
@@ -184,7 +185,7 @@ public class AdminController {
 				// Salva il file nella cartella "copertine" dentro /static/images (es.
 				// src/main/resources/static/images/copertine)
 				String nomeFile = System.currentTimeMillis() + "_" + copertinaFile.getOriginalFilename();
-				Path percorso = Paths.get("images/copertine/" + nomeFile);
+				Path percorso = Paths.get("src/main/resources/static/images/copertine/" + nomeFile);
 
 				// Assicura che la directory esista
 				Files.createDirectories(percorso.getParent());

@@ -55,7 +55,7 @@ public class AuthConfiguration {
 				.requestMatchers(HttpMethod.GET, "/index", "/libro/**", "/autore/**", "/autori/**", "/registrazione/**", "/favicon.ico", "/css/style.css", "/images/**").permitAll()
 				.requestMatchers(HttpMethod.POST, "/registrazione").permitAll()
 				.requestMatchers(HttpMethod.GET, "/eliminazioneRecensione/**", "/modificaAutore/**", "/eliminazioneAutore/**", "/modificaLibro/**", "eliminazioneLibro/**", "/autoreForm/**", "/libroForm/**").hasAuthority(ADMIN_ROLE)
-				.requestMatchers(HttpMethod.POST, "/aggiuntaAutore/**", "/aggiuntaLibro/**", "/modificaAutore/**", "/modificaLibro/" ).hasAuthority(ADMIN_ROLE)
+				.requestMatchers(HttpMethod.POST, "/aggiuntaAutore", "/aggiuntaLibro", "/modificaAutore", "/modificaLibro" ).hasAuthority(ADMIN_ROLE)
 				.requestMatchers(HttpMethod.POST, "/aggiuntaRecensione/**").hasAuthority(UTENTE_ROLE)
 				.anyRequest().authenticated()
 				)

@@ -12,7 +12,7 @@
 
     <!-- Contenuto principale -->
     <div class="book-detail-container">
-        <form action="/modificaAutore" method="post" enctype="multipart/form-data">
+        <form th:action="@{/modificaAutore}" method="post" enctype="multipart/form-data">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <input type="hidden" id="dataNascitaNascosta" th:value="${autore.dataNascita}">
             <input type="hidden" id="dataMorteNascosta" th:value="${autore.dataMorte}">

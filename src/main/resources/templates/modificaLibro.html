@@ -12,7 +12,7 @@
 
     <!-- Contenuto principale -->
     <div class="book-detail-container">
-        <form action="/modificaLibro" th:object="${libro}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/modificaLibro}" th:object="${libro}" method="post" enctype="multipart/form-data">
             <input type="hidden" th:field="${libro.id}" />
 
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
